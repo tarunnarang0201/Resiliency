@@ -15,4 +15,28 @@ The goal of resiliency is to return the application to a fully functioning state
 The code added to this repository covers all these principles:-
 ![image](https://user-images.githubusercontent.com/67380484/172799801-8299aead-3219-464a-9bbf-ad53a81d2e2b.png)
 
-*Code Section*
+# Code Explanation
+
+To demonstrate the partial failures management principles in the distributed environment, we have used Polly (http://www.thepollyproject.org/) to work with C# and .NETCore code.
+
+The code has been kept very simple, two different projects have been created by the name of Customer and Order. 
+
+**Customer microservice/project**: has CustomerController class which instantiates the dictionary object with prefilled values of CustomerID and the Customer Name. 
+This controller has a function which returns the name when CustomerID is passed. There are some more functions in this controller which are added to reproduce the issue when suppose Order service calls the Customer Service to get the Customer Name, we want ot return Null, or partial failure or no data. How does the implementation of Order Service would handle the partial failures has been explained.
+
+**Order microservice/project**: has the OrderController which calls the CustomerController for the Customer Data and when the data is not returned by Customer service, how does retry, timeout, buldhead, fallback and circuit behavior acts and manage the failures have been explained in this class.
+
+The policies have been created for different cases and applied in the code using Polly, please have a look at the Order Microservice. You may need to configure the URL of the Customer Controller when you call the service from OrderController. 
+
+**Install Polly**: To configure policies of Polly in ASP.NET Core you need to install the Polly package in the project. 
+**Install-Package Polly**
+
+
+**Reference URL**
+Other than this, I found a very good documentation by microsoft which talks about using of IHTTPFactory when calling the microservice instead of directly using HttpClient - https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests.
+
+
+
+
+
+
