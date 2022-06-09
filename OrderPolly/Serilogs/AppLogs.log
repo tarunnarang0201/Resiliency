@@ -1,0 +1,983 @@
+2022-05-25 15:44:58.279 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 15:44:58.336 +05:30 [INF] Hosting environment: Development
+2022-05-25 15:44:58.338 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 15:44:58.393 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 15:44:58.782 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 408.6744ms
+2022-05-25 15:44:59.832 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 15:45:00.145 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 313.8531ms
+2022-05-25 15:45:07.058 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - -
+2022-05-25 15:45:07.378 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 15:45:07.506 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 15:45:07.642 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 15:45:07.647 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 15:45:20.252 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 12741.0513ms
+2022-05-25 15:45:20.253 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 15:45:20.256 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (No connection could be made because the target machine actively refused it. (localhost:44383))
+ ---> System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (localhost:44383)
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomer(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 79
+   at lambda_method2(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-05-25 15:45:20.369 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - - - 500 - text/plain 13311.3281ms
+2022-05-25 16:18:00.692 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 16:18:00.725 +05:30 [INF] Hosting environment: Development
+2022-05-25 16:18:00.727 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 16:18:00.750 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 16:18:01.007 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 262.5686ms
+2022-05-25 16:18:02.552 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 16:18:02.742 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 192.4917ms
+2022-05-25 16:18:31.577 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 16:18:31.608 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:18:31.630 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:18:31.678 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:31.680 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:31.978 +05:30 [INF] Received HTTP response headers after 295.1935ms - 200
+2022-05-25 16:18:31.979 +05:30 [INF] End processing HTTP request after 302.6406ms - 200
+2022-05-25 16:18:31.985 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:18:31.999 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 364.9123ms
+2022-05-25 16:18:32.000 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:18:32.000 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 200 - application/json;+charset=utf-8 422.4991ms
+2022-05-25 16:18:39.411 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 16:18:39.413 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:18:39.413 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:18:39.414 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:39.414 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:39.419 +05:30 [INF] Received HTTP response headers after 4.7357ms - 200
+2022-05-25 16:18:39.419 +05:30 [INF] End processing HTTP request after 5.1362ms - 200
+2022-05-25 16:18:39.420 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:18:39.420 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 6.9005ms
+2022-05-25 16:18:39.420 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:18:39.424 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 200 - application/json;+charset=utf-8 12.7040ms
+2022-05-25 16:18:41.894 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 16:18:41.894 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:18:41.894 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:18:41.894 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:41.895 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:45.957 +05:30 [INF] Received HTTP response headers after 4062.6577ms - 500
+2022-05-25 16:18:45.957 +05:30 [INF] End processing HTTP request after 4062.9401ms - 500
+2022-05-25 16:18:50.529 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:50.529 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:52.601 +05:30 [INF] Received HTTP response headers after 2071.7715ms - 500
+2022-05-25 16:18:52.601 +05:30 [INF] End processing HTTP request after 2072.1173ms - 500
+2022-05-25 16:18:53.836 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:53.836 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:18:54.973 +05:30 [INF] Received HTTP response headers after 1137.0847ms - 500
+2022-05-25 16:18:54.974 +05:30 [INF] End processing HTTP request after 1137.5253ms - 500
+2022-05-25 16:18:57.474 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 15579.6822ms
+2022-05-25 16:18:57.475 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:18:57.477 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass7_0.<GetOrderByCustomer>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 89
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.Retry.RetryEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Action`4 onRetry, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider)
+   at Polly.Retry.RetryPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomer(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 89
+   at lambda_method2(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-05-25 16:18:57.554 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 500 - text/plain 15660.5134ms
+2022-05-25 16:21:12.960 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 16:21:12.979 +05:30 [INF] Hosting environment: Development
+2022-05-25 16:21:12.981 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 16:21:12.996 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 16:21:13.135 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 142.6614ms
+2022-05-25 16:21:13.822 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 16:21:13.956 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 134.7100ms
+2022-05-25 16:21:30.942 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - -
+2022-05-25 16:21:30.969 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:30.990 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:21:31.025 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:31.027 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:31.281 +05:30 [INF] Received HTTP response headers after 251.4963ms - 200
+2022-05-25 16:21:31.282 +05:30 [INF] End processing HTTP request after 259.0327ms - 200
+2022-05-25 16:21:31.288 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:21:31.299 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 304.8825ms
+2022-05-25 16:21:31.299 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:31.299 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - - - 200 - application/json;+charset=utf-8 357.2577ms
+2022-05-25 16:21:35.050 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - -
+2022-05-25 16:21:35.051 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:35.051 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:21:35.052 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:35.052 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:35.057 +05:30 [INF] Received HTTP response headers after 5.4519ms - 200
+2022-05-25 16:21:35.058 +05:30 [INF] End processing HTTP request after 5.7751ms - 200
+2022-05-25 16:21:35.058 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:21:35.058 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 7.1131ms
+2022-05-25 16:21:35.058 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:35.059 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - - - 200 - application/json;+charset=utf-8 8.9283ms
+2022-05-25 16:21:37.806 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - -
+2022-05-25 16:21:37.806 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:37.806 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:21:37.806 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:37.806 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:37.894 +05:30 [INF] Received HTTP response headers after 87.9242ms - 500
+2022-05-25 16:21:37.895 +05:30 [INF] End processing HTTP request after 88.2128ms - 500
+2022-05-25 16:21:37.899 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:37.899 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:37.906 +05:30 [INF] Received HTTP response headers after 6.9653ms - 500
+2022-05-25 16:21:37.906 +05:30 [INF] End processing HTTP request after 7.297ms - 500
+2022-05-25 16:21:37.907 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:37.908 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:37.910 +05:30 [INF] Received HTTP response headers after 1.952ms - 200
+2022-05-25 16:21:37.910 +05:30 [INF] End processing HTTP request after 2.3743ms - 200
+2022-05-25 16:21:37.910 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:21:37.910 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 103.9673ms
+2022-05-25 16:21:37.910 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:37.911 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - - - 200 - application/json;+charset=utf-8 104.6965ms
+2022-05-25 16:21:39.477 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - -
+2022-05-25 16:21:39.477 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:39.477 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:21:39.477 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:39.477 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:39.483 +05:30 [INF] Received HTTP response headers after 5.3424ms - 200
+2022-05-25 16:21:39.483 +05:30 [INF] End processing HTTP request after 5.5875ms - 200
+2022-05-25 16:21:39.484 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:21:39.484 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 7.0163ms
+2022-05-25 16:21:39.484 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:39.485 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - - - 200 - application/json;+charset=utf-8 7.8865ms
+2022-05-25 16:21:40.987 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - -
+2022-05-25 16:21:40.987 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:40.988 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:21:40.988 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:40.988 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:40.998 +05:30 [INF] Received HTTP response headers after 9.3338ms - 500
+2022-05-25 16:21:40.998 +05:30 [INF] End processing HTTP request after 9.6894ms - 500
+2022-05-25 16:21:40.998 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:40.999 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:41.001 +05:30 [INF] Received HTTP response headers after 2.2253ms - 200
+2022-05-25 16:21:41.001 +05:30 [INF] End processing HTTP request after 2.5483ms - 200
+2022-05-25 16:21:41.001 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:21:41.002 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 13.8383ms
+2022-05-25 16:21:41.002 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:41.003 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - - - 200 - application/json;+charset=utf-8 15.5817ms
+2022-05-25 16:21:41.912 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - -
+2022-05-25 16:21:41.912 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:41.912 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:21:41.912 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:41.912 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:41.914 +05:30 [INF] Received HTTP response headers after 1.6661ms - 200
+2022-05-25 16:21:41.914 +05:30 [INF] End processing HTTP request after 1.899ms - 200
+2022-05-25 16:21:41.914 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:21:41.915 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 2.6869ms
+2022-05-25 16:21:41.915 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:41.915 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - - - 200 - application/json;+charset=utf-8 3.4566ms
+2022-05-25 16:21:42.749 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - -
+2022-05-25 16:21:42.750 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:42.750 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:21:42.750 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:42.750 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:42.759 +05:30 [INF] Received HTTP response headers after 8.5347ms - 500
+2022-05-25 16:21:42.759 +05:30 [INF] End processing HTTP request after 8.8815ms - 500
+2022-05-25 16:21:42.760 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:42.761 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:42.772 +05:30 [INF] Received HTTP response headers after 11.8896ms - 500
+2022-05-25 16:21:42.773 +05:30 [INF] End processing HTTP request after 12.2761ms - 500
+2022-05-25 16:21:42.773 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:42.774 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 16:21:42.775 +05:30 [INF] Received HTTP response headers after 1.6981ms - 200
+2022-05-25 16:21:42.775 +05:30 [INF] End processing HTTP request after 1.9878ms - 200
+2022-05-25 16:21:42.776 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:21:42.776 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 26.0986ms
+2022-05-25 16:21:42.776 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:42.777 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/1 - - - 200 - application/json;+charset=utf-8 27.4516ms
+2022-05-25 16:21:49.126 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 16:21:49.126 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:49.126 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:21:49.127 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:21:49.127 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:21:49.134 +05:30 [INF] Received HTTP response headers after 7.77ms - 500
+2022-05-25 16:21:49.135 +05:30 [INF] End processing HTTP request after 7.9749ms - 500
+2022-05-25 16:21:49.135 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:21:49.135 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:21:49.138 +05:30 [INF] Received HTTP response headers after 2.6953ms - 200
+2022-05-25 16:21:49.138 +05:30 [INF] End processing HTTP request after 2.9862ms - 200
+2022-05-25 16:21:49.138 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:21:49.139 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 12.2607ms
+2022-05-25 16:21:49.139 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:49.139 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 200 - application/json;+charset=utf-8 13.0804ms
+2022-05-25 16:21:50.757 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 16:21:50.758 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:50.758 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:21:50.758 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:21:50.758 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:21:50.765 +05:30 [INF] Received HTTP response headers after 7.0811ms - 500
+2022-05-25 16:21:50.765 +05:30 [INF] End processing HTTP request after 7.2941ms - 500
+2022-05-25 16:21:50.766 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:21:50.767 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:21:50.768 +05:30 [INF] Received HTTP response headers after 1.5724ms - 200
+2022-05-25 16:21:50.768 +05:30 [INF] End processing HTTP request after 1.8549ms - 200
+2022-05-25 16:21:50.768 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:21:50.769 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 10.8916ms
+2022-05-25 16:21:50.769 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:21:50.769 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 200 - application/json;+charset=utf-8 12.0925ms
+2022-05-25 16:22:17.558 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 16:22:17.558 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:22:17.558 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:22:17.559 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:17.559 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:17.575 +05:30 [INF] Received HTTP response headers after 15.883ms - 500
+2022-05-25 16:22:17.575 +05:30 [INF] End processing HTTP request after 16.1648ms - 500
+2022-05-25 16:22:17.576 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:17.576 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:17.588 +05:30 [INF] Received HTTP response headers after 11.2521ms - 500
+2022-05-25 16:22:17.588 +05:30 [INF] End processing HTTP request after 11.6656ms - 500
+2022-05-25 16:22:17.588 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:17.589 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:17.601 +05:30 [INF] Received HTTP response headers after 12.1768ms - 500
+2022-05-25 16:22:17.601 +05:30 [INF] End processing HTTP request after 12.4407ms - 500
+2022-05-25 16:22:17.602 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:17.602 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:17.603 +05:30 [INF] Received HTTP response headers after 1.6396ms - 200
+2022-05-25 16:22:17.603 +05:30 [INF] End processing HTTP request after 1.8582ms - 200
+2022-05-25 16:22:17.604 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:22:17.604 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 45.3687ms
+2022-05-25 16:22:17.604 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:22:17.605 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 200 - application/json;+charset=utf-8 46.9001ms
+2022-05-25 16:22:18.755 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 16:22:18.755 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:22:18.756 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:22:18.756 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:18.756 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:18.758 +05:30 [INF] Received HTTP response headers after 1.8473ms - 200
+2022-05-25 16:22:18.758 +05:30 [INF] End processing HTTP request after 2.1684ms - 200
+2022-05-25 16:22:18.758 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:22:18.759 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 3.1052ms
+2022-05-25 16:22:18.759 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:22:18.762 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 200 - application/json;+charset=utf-8 6.4771ms
+2022-05-25 16:22:19.395 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 16:22:19.395 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:22:19.395 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:22:19.395 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:19.395 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:19.397 +05:30 [INF] Received HTTP response headers after 1.6232ms - 200
+2022-05-25 16:22:19.397 +05:30 [INF] End processing HTTP request after 1.8572ms - 200
+2022-05-25 16:22:19.397 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:22:19.398 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 2.5395ms
+2022-05-25 16:22:19.398 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:22:19.398 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 200 - application/json;+charset=utf-8 3.2084ms
+2022-05-25 16:22:19.849 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 16:22:19.849 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:22:19.849 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 16:22:19.849 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:19.849 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 16:22:19.851 +05:30 [INF] Received HTTP response headers after 1.5412ms - 200
+2022-05-25 16:22:19.851 +05:30 [INF] End processing HTTP request after 1.7689ms - 200
+2022-05-25 16:22:19.851 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 16:22:19.852 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 2.4073ms
+2022-05-25 16:22:19.852 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 16:22:19.852 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 200 - application/json;+charset=utf-8 3.2020ms
+2022-05-25 17:58:40.818 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 17:58:40.838 +05:30 [INF] Hosting environment: Development
+2022-05-25 17:58:40.839 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 17:58:40.860 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 17:58:41.001 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 144.2560ms
+2022-05-25 17:58:41.983 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 17:58:42.091 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 107.9938ms
+2022-05-25 17:58:58.053 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - -
+2022-05-25 17:58:58.131 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 17:58:58.181 +05:30 [INF] Route matched with {action = "GetOrderByCustomer", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomer(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 17:58:58.324 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 17:58:58.331 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/2"
+2022-05-25 17:59:18.345 +05:30 [ERR] Exception Occured
+Polly.Timeout.TimeoutRejectedException: The delegate executed through TimeoutPolicy did not complete within the timeout.
+ ---> System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Threading.ManualResetEventSlim.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.SpinThenBlockingWait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.InternalWaitCore(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait(CancellationToken cancellationToken)
+   at Polly.Timeout.TimeoutEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Func`2 timeoutProvider, TimeoutStrategy timeoutStrategy, Action`4 onTimeout)
+   --- End of inner exception stack trace ---
+   at Polly.Timeout.TimeoutEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Func`2 timeoutProvider, TimeoutStrategy timeoutStrategy, Action`4 onTimeout)
+   at Polly.Timeout.TimeoutPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomer(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 104
+2022-05-25 17:59:18.512 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 17:59:18.554 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly) in 20359.4088ms
+2022-05-25 17:59:18.555 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomer (OrderPolly)'
+2022-05-25 17:59:18.556 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomer/2 - - - 200 - application/json;+charset=utf-8 20502.7923ms
+2022-05-25 18:26:18.774 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 18:26:18.825 +05:30 [INF] Hosting environment: Development
+2022-05-25 18:26:18.828 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 18:26:18.876 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 18:26:19.219 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 352.9177ms
+2022-05-25 18:26:19.955 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 18:26:20.054 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 98.9431ms
+2022-05-25 18:29:40.634 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/1 - -
+2022-05-25 18:29:40.727 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:29:40.796 +05:30 [INF] Route matched with {action = "GetOrderByCustomerFallbackPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerFallbackPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 18:29:40.921 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 18:29:40.927 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 18:30:00.922 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly) in 20120.4291ms
+2022-05-25 18:30:00.923 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:30:00.926 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Polly.Timeout.TimeoutRejectedException: The delegate executed through TimeoutPolicy did not complete within the timeout.
+ ---> System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Threading.ManualResetEventSlim.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.SpinThenBlockingWait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.InternalWaitCore(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait(CancellationToken cancellationToken)
+   at Polly.Timeout.TimeoutEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Func`2 timeoutProvider, TimeoutStrategy timeoutStrategy, Action`4 onTimeout)
+   --- End of inner exception stack trace ---
+   at Polly.Timeout.TimeoutEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Func`2 timeoutProvider, TimeoutStrategy timeoutStrategy, Action`4 onTimeout)
+   at Polly.Timeout.TimeoutPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 143
+   at lambda_method2(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-05-25 18:30:01.009 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/1 - - - 500 - text/plain 20375.0709ms
+2022-05-25 18:30:43.391 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 18:30:43.411 +05:30 [INF] Hosting environment: Development
+2022-05-25 18:30:43.412 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 18:30:43.424 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 18:30:43.638 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 214.9968ms
+2022-05-25 18:30:44.534 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 18:30:44.644 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 110.1817ms
+2022-05-25 18:31:14.310 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/1 - -
+2022-05-25 18:31:14.383 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:31:14.447 +05:30 [INF] Route matched with {action = "GetOrderByCustomerFallbackPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerFallbackPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 18:31:14.546 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 18:31:14.551 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 18:31:15.375 +05:30 [INF] Received HTTP response headers after 813.8126ms - 500
+2022-05-25 18:31:15.379 +05:30 [INF] End processing HTTP request after 840.8815ms - 500
+2022-05-25 18:31:15.409 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly) in 949.504ms
+2022-05-25 18:31:15.411 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:31:15.418 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass11_0.<GetOrderByCustomerFallbackPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 143
+   at Polly.Policy`1.<>c__DisplayClass11_0.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.Fallback.FallbackEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, Action`2 onFallback, Func`4 fallbackAction)
+   at Polly.Fallback.FallbackPolicy`1.Implementation(Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy`1.Execute(Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy`1.Execute(Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 143
+   at lambda_method2(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-05-25 18:31:15.621 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/1 - - - 500 - text/plain 1310.0972ms
+2022-05-25 18:33:59.756 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 18:33:59.804 +05:30 [INF] Hosting environment: Development
+2022-05-25 18:33:59.806 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 18:33:59.833 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 18:34:00.057 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 230.9557ms
+2022-05-25 18:34:00.448 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 18:34:00.602 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 154.8206ms
+2022-05-25 18:34:10.393 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/1 - -
+2022-05-25 18:34:10.442 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:34:10.501 +05:30 [INF] Route matched with {action = "GetOrderByCustomerFallbackPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerFallbackPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 18:34:10.598 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 18:34:10.601 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/1"
+2022-05-25 18:34:11.112 +05:30 [INF] Received HTTP response headers after 506.6966ms - 500
+2022-05-25 18:34:11.114 +05:30 [INF] End processing HTTP request after 522.0125ms - 500
+2022-05-25 18:34:11.125 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 18:34:11.147 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly) in 638.6663ms
+2022-05-25 18:34:11.148 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:34:11.148 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/1 - - - 200 - application/json;+charset=utf-8 755.4227ms
+2022-05-25 18:35:47.228 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 18:35:47.244 +05:30 [INF] Hosting environment: Development
+2022-05-25 18:35:47.245 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 18:35:47.259 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 18:35:47.376 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 119.5270ms
+2022-05-25 18:35:48.008 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 18:35:48.102 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 94.3150ms
+2022-05-25 18:35:58.033 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/1 - -
+2022-05-25 18:35:58.107 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:35:58.167 +05:30 [INF] Route matched with {action = "GetOrderByCustomerFallbackPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerFallbackPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 18:35:58.265 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 18:35:58.270 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 18:35:58.810 +05:30 [INF] Received HTTP response headers after 534.24ms - 500
+2022-05-25 18:35:58.812 +05:30 [INF] End processing HTTP request after 555.4814ms - 500
+2022-05-25 18:35:58.831 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly) in 655.4375ms
+2022-05-25 18:35:58.832 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:35:58.839 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass11_0.<GetOrderByCustomerFallbackPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 143
+   at Polly.Policy`1.<>c__DisplayClass11_0.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.Fallback.FallbackEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, Action`2 onFallback, Func`4 fallbackAction)
+   at Polly.Fallback.FallbackPolicy`1.Implementation(Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy`1.Execute(Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy`1.Execute(Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 143
+   at lambda_method2(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-05-25 18:35:59.046 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/1 - - - 500 - text/plain 1012.8362ms
+2022-05-25 18:36:36.360 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 18:36:36.410 +05:30 [INF] Hosting environment: Development
+2022-05-25 18:36:36.412 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 18:36:36.442 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 18:36:36.738 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 302.1652ms
+2022-05-25 18:36:37.193 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 18:36:37.328 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 135.1187ms
+2022-05-25 18:36:46.068 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/2 - -
+2022-05-25 18:36:46.139 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:36:46.202 +05:30 [INF] Route matched with {action = "GetOrderByCustomerFallbackPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerFallbackPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 18:36:46.293 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-25 18:36:46.298 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-25 18:36:46.949 +05:30 [INF] Received HTTP response headers after 639.5515ms - 500
+2022-05-25 18:36:46.952 +05:30 [INF] End processing HTTP request after 666.8256ms - 500
+2022-05-25 18:36:46.975 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 18:36:47.019 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly) in 802.181ms
+2022-05-25 18:36:47.019 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-25 18:36:47.020 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/2 - - - 200 - application/json;+charset=utf-8 951.8433ms
+2022-05-25 19:01:29.502 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 19:01:29.520 +05:30 [INF] Hosting environment: Development
+2022-05-25 19:01:29.521 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 19:01:29.536 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 19:01:29.658 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 125.5149ms
+2022-05-25 19:01:30.452 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 19:01:30.539 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 86.5638ms
+2022-05-25 19:05:00.102 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - -
+2022-05-25 19:05:00.188 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:05:00.272 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 19:05:00.425 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 19:05:00.430 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 19:05:00.940 +05:30 [INF] Received HTTP response headers after 503.7508ms - 500
+2022-05-25 19:05:00.942 +05:30 [INF] End processing HTTP request after 526.1055ms - 500
+2022-05-25 19:05:00.952 +05:30 [ERR] Excpetion Occurred
+System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass13_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+2022-05-25 19:05:01.109 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 19:05:01.141 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 862.1588ms
+2022-05-25 19:05:01.142 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:05:01.143 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - - - 200 - application/json;+charset=utf-8 1040.4794ms
+2022-05-25 19:17:12.898 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - -
+2022-05-25 19:17:12.906 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:12.907 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 19:17:12.927 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 19:17:12.931 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 19:17:13.373 +05:30 [INF] Received HTTP response headers after 441.9853ms - 500
+2022-05-25 19:17:13.374 +05:30 [INF] End processing HTTP request after 446.8568ms - 500
+2022-05-25 19:17:13.382 +05:30 [ERR] Excpetion Occurred
+System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass13_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+2022-05-25 19:17:13.384 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 19:17:13.385 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 477.7351ms
+2022-05-25 19:17:13.385 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:13.385 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - - - 200 - application/json;+charset=utf-8 487.3696ms
+2022-05-25 19:17:19.943 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - -
+2022-05-25 19:17:19.943 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:19.943 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 19:17:19.944 +05:30 [ERR] Excpetion Occurred
+Polly.CircuitBreaker.BrokenCircuitException: The circuit is now open and is not allowing calls.
+ ---> System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass13_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   --- End of inner exception stack trace ---
+   at Polly.CircuitBreaker.CircuitStateController`1.OnActionPreExecute()
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+2022-05-25 19:17:19.945 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 19:17:19.945 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 1.8943ms
+2022-05-25 19:17:19.945 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:19.946 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - - - 200 - application/json;+charset=utf-8 2.9348ms
+2022-05-25 19:17:21.513 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - -
+2022-05-25 19:17:21.513 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:21.513 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 19:17:21.513 +05:30 [ERR] Excpetion Occurred
+Polly.CircuitBreaker.BrokenCircuitException: The circuit is now open and is not allowing calls.
+ ---> System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass13_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   --- End of inner exception stack trace ---
+   at Polly.CircuitBreaker.CircuitStateController`1.OnActionPreExecute()
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+2022-05-25 19:17:21.514 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 19:17:21.515 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 1.4798ms
+2022-05-25 19:17:21.515 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:21.515 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - - - 200 - application/json;+charset=utf-8 2.5837ms
+2022-05-25 19:17:25.310 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - -
+2022-05-25 19:17:25.310 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:25.310 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 19:17:25.311 +05:30 [ERR] Excpetion Occurred
+Polly.CircuitBreaker.BrokenCircuitException: The circuit is now open and is not allowing calls.
+ ---> System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass13_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   --- End of inner exception stack trace ---
+   at Polly.CircuitBreaker.CircuitStateController`1.OnActionPreExecute()
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+2022-05-25 19:17:25.311 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 19:17:25.311 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 1.0592ms
+2022-05-25 19:17:25.311 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:25.312 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - - - 200 - application/json;+charset=utf-8 1.8449ms
+2022-05-25 19:17:28.817 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - -
+2022-05-25 19:17:28.818 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:28.818 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 19:17:28.818 +05:30 [ERR] Excpetion Occurred
+Polly.CircuitBreaker.BrokenCircuitException: The circuit is now open and is not allowing calls.
+ ---> System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass13_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   --- End of inner exception stack trace ---
+   at Polly.CircuitBreaker.CircuitStateController`1.OnActionPreExecute()
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+2022-05-25 19:17:28.819 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 19:17:28.819 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 1.3286ms
+2022-05-25 19:17:28.819 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:28.820 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/1 - - - 200 - application/json;+charset=utf-8 2.3664ms
+2022-05-25 19:17:33.312 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - -
+2022-05-25 19:17:33.313 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:33.313 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 19:17:33.313 +05:30 [ERR] Excpetion Occurred
+Polly.CircuitBreaker.BrokenCircuitException: The circuit is now open and is not allowing calls.
+ ---> System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass13_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   --- End of inner exception stack trace ---
+   at Polly.CircuitBreaker.CircuitStateController`1.OnActionPreExecute()
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+2022-05-25 19:17:33.314 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 19:17:33.314 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 1.0968ms
+2022-05-25 19:17:33.314 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:17:33.314 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - - - 200 - application/json;+charset=utf-8 2.0950ms
+2022-05-25 19:21:16.966 +05:30 [INF] Request starting HTTP/1.1 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - -
+2022-05-25 19:21:16.972 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:21:16.972 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 19:21:16.974 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-25 19:21:16.974 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-25 19:21:17.016 +05:30 [INF] Received HTTP response headers after 42.1707ms - 500
+2022-05-25 19:21:17.016 +05:30 [INF] End processing HTTP request after 42.4899ms - 500
+2022-05-25 19:21:17.017 +05:30 [ERR] Excpetion Occurred
+System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass13_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 175
+2022-05-25 19:21:17.018 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 19:21:17.018 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 45.652ms
+2022-05-25 19:21:17.018 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-25 19:21:17.019 +05:30 [INF] Request finished HTTP/1.1 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - - - 200 - application/json;+charset=utf-8 53.5032ms
+2022-05-25 20:09:34.475 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-25 20:09:34.497 +05:30 [INF] Hosting environment: Development
+2022-05-25 20:09:34.498 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-25 20:09:34.515 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-25 20:09:34.638 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 125.3288ms
+2022-05-25 20:09:35.424 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-25 20:09:35.569 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 145.6995ms
+2022-05-25 20:10:10.865 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingRetryAndFallbackBoth/1 - -
+2022-05-25 20:10:10.967 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingRetryAndFallbackBoth (OrderPolly)'
+2022-05-25 20:10:11.034 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingRetryAndFallbackBoth", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingRetryAndFallbackBoth(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-25 20:10:11.144 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 20:10:11.146 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 20:10:12.110 +05:30 [INF] Received HTTP response headers after 954.7692ms - 500
+2022-05-25 20:10:12.113 +05:30 [INF] End processing HTTP request after 973.6918ms - 500
+2022-05-25 20:10:12.131 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 20:10:12.132 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 20:10:12.183 +05:30 [INF] Received HTTP response headers after 51.6213ms - 500
+2022-05-25 20:10:12.184 +05:30 [INF] End processing HTTP request after 52.3526ms - 500
+2022-05-25 20:10:12.185 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 20:10:12.185 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 20:10:12.205 +05:30 [INF] Received HTTP response headers after 19.7774ms - 500
+2022-05-25 20:10:12.205 +05:30 [INF] End processing HTTP request after 20.4197ms - 500
+2022-05-25 20:10:12.207 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 20:10:12.207 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/1"
+2022-05-25 20:10:12.223 +05:30 [INF] Received HTTP response headers after 15.8036ms - 500
+2022-05-25 20:10:12.223 +05:30 [INF] End processing HTTP request after 16.3571ms - 500
+2022-05-25 20:10:12.232 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-25 20:10:12.256 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingRetryAndFallbackBoth (OrderPolly) in 1212.5305ms
+2022-05-25 20:10:12.256 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingRetryAndFallbackBoth (OrderPolly)'
+2022-05-25 20:10:12.256 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingRetryAndFallbackBoth/1 - - - 200 - application/json;+charset=utf-8 1390.9828ms
+2022-05-30 12:41:32.451 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-05-30 12:41:32.510 +05:30 [INF] Hosting environment: Development
+2022-05-30 12:41:32.512 +05:30 [INF] Content root path: C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly
+2022-05-30 12:41:32.557 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-30 12:41:32.959 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 386.1659ms
+2022-05-30 12:41:40.208 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-30 12:41:40.449 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 240.6949ms
+2022-05-30 12:44:17.258 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/index.html - -
+2022-05-30 12:44:17.276 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/index.html - - - 200 - text/html;charset=utf-8 18.3247ms
+2022-05-30 12:44:19.000 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - -
+2022-05-30 12:44:19.031 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 31.0891ms
+2022-05-30 12:46:22.468 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingRetryPolicy/1 - -
+2022-05-30 12:46:22.609 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingRetryPolicy (OrderPolly)'
+2022-05-30 12:46:22.699 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingRetryPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingRetryPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-30 12:46:23.108 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:23.115 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:25.541 +05:30 [INF] Received HTTP response headers after 2417.1249ms - 500
+2022-05-30 12:46:25.544 +05:30 [INF] End processing HTTP request after 2445.4836ms - 500
+2022-05-30 12:46:25.558 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:25.558 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:25.586 +05:30 [INF] Received HTTP response headers after 28.0171ms - 500
+2022-05-30 12:46:25.587 +05:30 [INF] End processing HTTP request after 28.6719ms - 500
+2022-05-30 12:46:25.592 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:25.593 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:25.654 +05:30 [INF] Received HTTP response headers after 61.3157ms - 500
+2022-05-30 12:46:25.654 +05:30 [INF] End processing HTTP request after 62.0025ms - 500
+2022-05-30 12:46:25.655 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:25.655 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:25.674 +05:30 [INF] Received HTTP response headers after 18.1725ms - 500
+2022-05-30 12:46:25.674 +05:30 [INF] End processing HTTP request after 18.6513ms - 500
+2022-05-30 12:46:25.684 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:25.684 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameRandomFailureForRetry/1"
+2022-05-30 12:46:25.713 +05:30 [INF] Received HTTP response headers after 29.115ms - 200
+2022-05-30 12:46:25.714 +05:30 [INF] End processing HTTP request after 29.9697ms - 200
+2022-05-30 12:46:25.725 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-30 12:46:25.771 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingRetryPolicy (OrderPolly) in 3059.0659ms
+2022-05-30 12:46:25.771 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingRetryPolicy (OrderPolly)'
+2022-05-30 12:46:25.772 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingRetryPolicy/1 - - - 200 - application/json;+charset=utf-8 3303.7855ms
+2022-05-30 12:51:08.869 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingTimeoutPolicy/2 - -
+2022-05-30 12:51:08.886 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingTimeoutPolicy (OrderPolly)'
+2022-05-30 12:51:08.904 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingTimeoutPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingTimeoutPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-30 12:51:08.914 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameAddingDelayForTimeout/2"
+2022-05-30 12:51:08.915 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameAddingDelayForTimeout/2"
+2022-05-30 12:51:28.928 +05:30 [ERR] Exception Occured
+Polly.Timeout.TimeoutRejectedException: The delegate executed through TimeoutPolicy did not complete within the timeout.
+ ---> System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Threading.ManualResetEventSlim.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.SpinThenBlockingWait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.InternalWaitCore(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.Wait(CancellationToken cancellationToken)
+   at Polly.Timeout.TimeoutEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Func`2 timeoutProvider, TimeoutStrategy timeoutStrategy, Action`4 onTimeout)
+   --- End of inner exception stack trace ---
+   at Polly.Timeout.TimeoutEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, Func`2 timeoutProvider, TimeoutStrategy timeoutStrategy, Action`4 onTimeout)
+   at Polly.Timeout.TimeoutPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingTimeoutPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 172
+2022-05-30 12:51:29.164 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-30 12:51:29.165 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingTimeoutPolicy (OrderPolly) in 20260.6645ms
+2022-05-30 12:51:29.165 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingTimeoutPolicy (OrderPolly)'
+2022-05-30 12:51:29.166 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingTimeoutPolicy/2 - - - 200 - application/json;+charset=utf-8 20296.2516ms
+2022-05-30 12:54:56.263 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/2 - -
+2022-05-30 12:54:56.264 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-30 12:54:56.268 +05:30 [INF] Route matched with {action = "GetOrderByCustomerFallbackPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerFallbackPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-30 12:54:56.275 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-30 12:54:56.276 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-30 12:54:56.335 +05:30 [INF] Received HTTP response headers after 59.3987ms - 500
+2022-05-30 12:54:56.335 +05:30 [INF] End processing HTTP request after 59.8094ms - 500
+2022-05-30 12:54:56.337 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-30 12:54:56.338 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly) in 69.532ms
+2022-05-30 12:54:56.338 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerFallbackPolicy (OrderPolly)'
+2022-05-30 12:54:56.341 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerFallbackPolicy/2 - - - 200 - application/json;+charset=utf-8 77.7675ms
+2022-05-30 12:57:38.781 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - -
+2022-05-30 12:57:38.783 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-30 12:57:38.790 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-30 12:57:38.794 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-30 12:57:38.794 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-30 12:57:38.850 +05:30 [INF] Received HTTP response headers after 55.6188ms - 500
+2022-05-30 12:57:38.850 +05:30 [INF] End processing HTTP request after 56.127ms - 500
+2022-05-30 12:57:38.853 +05:30 [ERR] Excpetion Occurred
+System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass16_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 220
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 220
+2022-05-30 12:57:38.861 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-30 12:57:38.861 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 71.0437ms
+2022-05-30 12:57:38.862 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-30 12:57:38.863 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - - - 200 - application/json;+charset=utf-8 82.0032ms
+2022-05-30 12:58:16.559 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - -
+2022-05-30 12:58:16.560 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-30 12:58:16.573 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-30 12:58:16.573 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-30 12:58:16.574 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerNameWithPermFailure/2"
+2022-05-30 12:58:16.624 +05:30 [INF] Received HTTP response headers after 50.0904ms - 500
+2022-05-30 12:58:16.624 +05:30 [INF] End processing HTTP request after 50.5695ms - 500
+2022-05-30 12:58:16.627 +05:30 [ERR] Excpetion Occurred
+System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass16_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 220
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 220
+2022-05-30 12:58:16.628 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-30 12:58:16.629 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 55.7853ms
+2022-05-30 12:58:16.629 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-30 12:58:16.631 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - - - 200 - application/json;+charset=utf-8 72.4482ms
+2022-05-30 12:58:34.489 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - -
+2022-05-30 12:58:34.490 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-30 12:58:34.490 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingCircuitBreakerPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingCircuitBreakerPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-30 12:58:34.496 +05:30 [ERR] Excpetion Occurred
+Polly.CircuitBreaker.BrokenCircuitException: The circuit is now open and is not allowing calls.
+ ---> System.AggregateException: One or more errors occurred. (Response status code does not indicate success: 500 (Internal Server Error).)
+ ---> System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.HttpClient.GetStringAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at OrderPolly.Controllers.OrderController.<>c__DisplayClass16_0.<GetOrderByCustomerUsingCircuitBreakerPolicy>b__0() in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 220
+   at Polly.Policy.<>c__DisplayClass114_0`1.<Execute>b__0(Context _, CancellationToken _)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.<>c__DisplayClass8_0`1.<Implementation>b__0(Context ctx, CancellationToken ct)
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 220
+   --- End of inner exception stack trace ---
+   at Polly.CircuitBreaker.CircuitStateController`1.OnActionPreExecute()
+   at Polly.CircuitBreaker.CircuitBreakerEngine.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldHandleExceptionPredicates, ResultPredicates`1 shouldHandleResultPredicates, ICircuitController`1 breakerController)
+   at Polly.CircuitBreaker.CircuitBreakerPolicy.Implementation[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`3 action, Context context, CancellationToken cancellationToken)
+   at Polly.Policy.Execute[TResult](Func`1 action)
+   at OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy(Int32 customerId) in C:\Users\48013\source\repos\Resilient\ResiliencePolly\PollyCode\OrderPolly\Controllers\OrderController.cs:line 220
+2022-05-30 12:58:34.497 +05:30 [INF] Executing ObjectResult, writing value of type 'OrderPolly.Models.OrderDTO'.
+2022-05-30 12:58:34.497 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly) in 2.6835ms
+2022-05-30 12:58:34.497 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingCircuitBreakerPolicy (OrderPolly)'
+2022-05-30 12:58:34.498 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingCircuitBreakerPolicy/2 - - - 200 - application/json;+charset=utf-8 9.4340ms
+2022-05-30 13:03:20.736 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingBulkHeadPolicy/3 - -
+2022-05-30 13:03:20.737 +05:30 [INF] Executing endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingBulkHeadPolicy (OrderPolly)'
+2022-05-30 13:03:20.753 +05:30 [INF] Route matched with {action = "GetOrderByCustomerUsingBulkHeadPolicy", controller = "Order"}. Executing controller action with signature OrderPolly.Models.OrderDTO GetOrderByCustomerUsingBulkHeadPolicy(Int32) on controller OrderPolly.Controllers.OrderController (OrderPolly).
+2022-05-30 13:03:20.760 +05:30 [INF] Start processing HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/3"
+2022-05-30 13:03:20.760 +05:30 [INF] Sending HTTP request GET "https://localhost:44383/api/Customer/GetCustomerName/3"
+2022-05-30 13:03:21.017 +05:30 [INF] Received HTTP response headers after 256.566ms - 200
+2022-05-30 13:03:21.017 +05:30 [INF] End processing HTTP request after 256.9823ms - 200
+2022-05-30 13:03:21.020 +05:30 [INF] Executing ObjectResult, writing value of type 'null'.
+2022-05-30 13:03:21.020 +05:30 [INF] Executed action OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingBulkHeadPolicy (OrderPolly) in 267.0483ms
+2022-05-30 13:03:21.020 +05:30 [INF] Executed endpoint 'OrderPolly.Controllers.OrderController.GetOrderByCustomerUsingBulkHeadPolicy (OrderPolly)'
+2022-05-30 13:03:21.022 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44397/api/Order/GetOrderByCustomerUsingBulkHeadPolicy/3 - - - 204 0 - 285.6664ms

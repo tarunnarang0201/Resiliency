@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerPolly", "CustomerPolly\CustomerPolly.csproj", "{F6DF5905-3D64-4714-9DE9-F06C14BD14A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderPolly", "OrderPolly\OrderPolly.csproj", "{DC5D90B2-24BB-4BFF-9CD3-FE982174A0D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6DF5905-3D64-4714-9DE9-F06C14BD14A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DF5905-3D64-4714-9DE9-F06C14BD14A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DF5905-3D64-4714-9DE9-F06C14BD14A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DF5905-3D64-4714-9DE9-F06C14BD14A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC5D90B2-24BB-4BFF-9CD3-FE982174A0D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5D90B2-24BB-4BFF-9CD3-FE982174A0D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5D90B2-24BB-4BFF-9CD3-FE982174A0D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5D90B2-24BB-4BFF-9CD3-FE982174A0D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6664EFF4-DD78-482F-B989-1F517767D0DD}
+	EndGlobalSection
+EndGlobal
